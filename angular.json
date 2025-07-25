@@ -3,5 +3,153 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "latg-side-menu": {
+      "projectType": "library",
+      "root": "projects/latg-side-menu",
+      "sourceRoot": "projects/latg-side-menu/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/latg-side-menu/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/latg-side-menu/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/latg-side-menu/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/latg-side-menu/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/latg-side-menu/**/*.ts",
+              "projects/latg-side-menu/**/*.html"
+            ],
+            "eslintConfig": "projects/latg-side-menu/eslint.config.js"
+          }
+        }
+      }
+    },
+    "latg-testbed-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/latg-testbed-app",
+      "sourceRoot": "projects/latg-testbed-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/latg-testbed-app",
+            "index": "projects/latg-testbed-app/src/index.html",
+            "browser": "projects/latg-testbed-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/latg-testbed-app/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/latg-testbed-app/public"
+              }
+            ],
+            "styles": [
+              "projects/latg-testbed-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "latg-testbed-app:build:production"
+            },
+            "development": {
+              "buildTarget": "latg-testbed-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/latg-testbed-app/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/latg-testbed-app/public"
+              }
+            ],
+            "styles": [
+              "projects/latg-testbed-app/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/latg-testbed-app/**/*.ts",
+              "projects/latg-testbed-app/**/*.html"
+            ],
+            "eslintConfig": "projects/latg-testbed-app/eslint.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "6f2f60fb-87e9-463e-aa08-4c6d37f9dc4f",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

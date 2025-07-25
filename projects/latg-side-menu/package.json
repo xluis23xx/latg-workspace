@@ -1,0 +1,23 @@
+{
+  "name": "latg-side-menu",
+  "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xluis23xx/latg-workspace"
+  },
+  "keywords": ["lycann", "latg", "do-not-use"],
+  "license": "MIT",
+  "author": "Luis Tirado",
+  "bugs": {
+    "url": "https://github.com/xluis23xx/latg-workspace/issues"
+  },
+  "homepage": "https://luis-tirado.com",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
