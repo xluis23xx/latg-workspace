@@ -17,6 +17,8 @@ export enum TitleColor {
 export class LatgSideMenuComponent {
   isAuthenticated = input(false);
 
+  title = input('LATG');
+  subTitle = input('Corp');
   titleColor = input<TitleColor>(TitleColor.purple);
 
   onSignOut = output();
